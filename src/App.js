@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { useCallback, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 
 function App() {
   const [input, setInput] = useState("");
@@ -22,7 +22,8 @@ function App() {
   );
 }
 
-const ChildComponent = ({count, incre}) => {
+const ChildComponent = memo(({count, incre}) => {
+  console.log("rendering");
   return (
     <div>
       <h2>This is a child component</h2>
@@ -30,6 +31,6 @@ const ChildComponent = ({count, incre}) => {
       <button onClick={incre}>Increment Counter</button>
     </div>
   );
-}
+})
 
 export default App;
